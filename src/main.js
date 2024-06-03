@@ -2,10 +2,7 @@ import './assets/main.scss'
 
 import { createApp } from 'vue'
 import App from './App.vue'
-//import PrimeVue from 'primevue/config';
-//import PrimeVueStyled from 'primevue/styled';
 import PrimeVue from 'primevue/config';
-//import PrimeOne from 'primevue/themes/primeone';
 import Aura from 'primevue/themes/aura';
 
 

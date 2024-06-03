@@ -1,6 +1,9 @@
 {
   "name": "websystems-structure",
-  "version": "1.0.0",
+  "description": "visual builder",
+  "author": "Web Systems",
+  "license": "MIT",
+  "version": "1.0.1",
   "private": false,
   "type": "module",
   "scripts": {

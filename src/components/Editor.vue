@@ -24,6 +24,17 @@
     import TabPanels from 'primevue/tabpanels';
     import TabPanel from 'primevue/tabpanel';
 
+    import ButtonBlock from './src/blocks/ButtonBlock.vue'
+    import CodeBlock from './src/blocks/CodeBlock.vue'
+    import ColumnBlock from './src/blocks/ColumnBlock.vue'
+    import HeaderBlock from './src/blocks/HeaderBlock.vue'
+    import ImageBlock from './src/blocks/ImageBlock.vue'
+    import SectionBlock from './src/blocks/SectionBlock.vue'
+    import TextBlock from './src/blocks/TextBlock.vue'
+    import TwigBlock from './src/blocks/TwigBlock.vue'
+    import MediaModal from './src/components/MediaModal.vue'
+    import WidgetActions from './src/components/WidgetActions.vue'    
+
     const props = defineProps({
         pageContent: {
             type: Array,

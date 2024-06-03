@@ -3,7 +3,7 @@
   "description": "visual builder",
   "author": "Web Systems",
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "type": "module",
   "scripts": {

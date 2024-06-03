@@ -3,8 +3,6 @@
     import { defineEmits, ref, provide, onMounted, onBeforeMount, watch } from 'vue';
     import { widgetStore } from './../store/widgets.js'
     import { contentStore } from './../store/content.js'
-    import WidgetActions from './WidgetActions.vue'
-    import MediaModal from './MediaModal.vue'
     import '@vueup/vue-quill/dist/vue-quill.snow.css';
     import '@vueup/vue-quill/dist/vue-quill.bubble.css';
     import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
@@ -32,8 +30,8 @@
     import SectionBlock from './src/blocks/SectionBlock.vue'
     import TextBlock from './src/blocks/TextBlock.vue'
     import TwigBlock from './src/blocks/TwigBlock.vue'
-    import MediaModal from './src/components/MediaModal.vue'
-    import WidgetActions from './src/components/WidgetActions.vue'    
+    import MediaModal from './src/MediaModal.vue'
+    import WidgetActions from './src/WidgetActions.vue'    
 
     const props = defineProps({
         pageContent: {

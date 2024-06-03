@@ -3,6 +3,8 @@
     import { defineEmits, ref, provide, onMounted, onBeforeMount, watch } from 'vue';
     import { widgetStore } from './../store/widgets.js'
     import { contentStore } from './../store/content.js'
+    import WidgetActions from './WidgetActions.vue'
+    import MediaModal from './MediaModal.vue'
     import '@vueup/vue-quill/dist/vue-quill.snow.css';
     import '@vueup/vue-quill/dist/vue-quill.bubble.css';
     import { PerfectScrollbar } from 'vue3-perfect-scrollbar'

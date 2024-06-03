@@ -1,0 +1,101 @@
+.s-sidebar {
+    color: #ffffff;
+
+    &__header {
+        padding: 0 20px;
+        color: #ffffff;
+        font-size: 1rem;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    &__settings {
+
+    }
+
+    &__setting {
+        margin-bottom: 20px;
+    }
+
+    &__multi {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        
+        
+
+        & input {
+            width: 20px;
+        }
+    }    
+
+    &__multi-inputs {
+        display: flex;
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+
+        & button {
+            font-size: 1.2rem;
+        }
+
+        & input {
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+    }
+
+    &__single {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+
+        &--left {
+            align-items: flex-start;
+        }
+    }
+
+    &__image-link {
+        position: relative;
+
+        & img {
+            max-width: 100%;
+            cursor:pointer;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+    }
+
+    & input {
+        background: transparent;
+        border: 1px #3f444b solid;
+        color: #ffffff;
+        padding: 5px 5px;
+
+        &::placeholder {
+            color: transparent;
+        }
+    }
+
+    & select {
+        background: transparent;
+        border: 1px #3f444b solid;
+        color: #ffffff;
+        padding: 5px 5px;
+        
+        &:focus {
+            color: #000;
+        }
+    }
+
+    & label {
+        color: #c6c8cc;
+        font-size: 0.7rem;
+    }
+}

@@ -1,0 +1,10 @@
+.text-block {
+    &__textarea {
+        width: 100%;
+        height: fit-content;
+        border: 0px;
+        font-family: "Brown", sans-serif;
+        font-size: 1rem;
+        outline: none !important;
+    }
+}

@@ -1,0 +1,27 @@
+.s-text-block {
+    padding: 10px;
+    margin: 0px;
+}
+.s-section-block {
+    padding: 10px;
+    margin: 0px;
+}
+.s-column-block {
+    padding: 10px;
+    margin: 0px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    gap: 10px;
+}
+.s-column-block__column{
+    
+}
+.s-header-block {
+    padding: 10px;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+.s-image-block {
+    max-width: 100%;
+}

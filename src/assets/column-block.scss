@@ -1,0 +1,14 @@
+.columns-block {
+    &__columns {
+        display: flex;
+        gap: 20px;
+
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    &__column {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}

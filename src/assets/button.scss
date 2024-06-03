@@ -1,0 +1,17 @@
+.s-button {
+    border: 0px;
+    color: #fff;
+    padding: 5px 5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &--transparent {
+        background-color: transparent;
+        color: #fff;
+    }
+
+    &--primary {
+        background-color: #000;
+    }
+}

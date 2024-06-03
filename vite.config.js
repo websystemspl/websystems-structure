@@ -12,7 +12,7 @@ export default defineConfig({
     }   
   },
   build: {
-    entry: './src/index.js',
+    entry: './src/main.js',
     rollupOptions: {
       output: {
         entryFileNames: `structure_[name].js`,

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted, computed } from 'vue';
 import draggable from 'vuedraggable'
 import { contentStore } from './../store/content.js'
 import WidgetActions from './../components/WidgetActions.vue'
@@ -11,6 +11,13 @@ const props = defineProps({
   },
 });
 
+const sizes = computed(() => {
+  let sizes = "";
+  props.elementData.columnsSizes.forEach((size) => {
+    sizes += " "+size;
+  });
+  return sizes;
+});
 
 for (let i = 0; i < props.elementData.columnsCount; i++) {
   props.elementData.columns.push([]);
@@ -46,11 +53,12 @@ watch(() => props.elementData.columnsCount, (newVal) => {
         (props.elementData.settings.FontSize) ? 'font-size:'+props.elementData.settings.FontSize+props.elementData.settings.FontSizeType.code+';' : '',
       ]
     ">
-      <div class="columns-block__columns" :style="'align-items:' + (props.elementData.alignVertical)">
+      <div class="columns-block__columns" :style="'align-items:' + (props.elementData.alignVertical)+'; grid-template-columns: ' + sizes">
         <div v-for="col in props.elementData.columnsCount" :key="col - 1" class="columns-block__column">
           <draggable
               class="drag-area"
               :list="props.elementData.columns[col - 1]"
+              :emptyInsertThreshold="100"
               group="containers"
               itemKey="uid"
           >

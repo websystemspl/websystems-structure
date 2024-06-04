@@ -37,6 +37,7 @@ const props = defineProps({
           <draggable
               class="drag-area"
               :list="props.elementData.blocks"
+              :emptyInsertThreshold="100"
               group="containers"
               itemKey="uid"
           >

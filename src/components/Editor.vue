@@ -23,6 +23,10 @@
     import TabPanels from 'primevue/tabpanels';
     import TabPanel from 'primevue/tabpanel';
     import ScrollPanel from 'primevue/scrollpanel';
+    import Accordion from 'primevue/accordion';
+    import AccordionPanel from 'primevue/accordionpanel';
+    import AccordionHeader from 'primevue/accordionheader';
+    import AccordionContent from 'primevue/accordioncontent';    
 
     const props = defineProps({
         pageContent: {
@@ -40,8 +44,6 @@
             default: null,
         },
     });
-
-
 
     const emit = defineEmits(['close', 'update:content']);
 
@@ -116,6 +118,20 @@
         fetch(save.value.url, requestOptions).then(response => response.json()).then(data => {
             saveLoading.value = false;
         });
+    }   
+
+    function updateSizes()
+    {
+        if(settings.value.columnsCount > settings.value.columnsSizes.length)
+        {
+            for (let i = settings.value.columnsSizes.length; i < settings.value.columnsCount; i++) {
+                settings.value.columnsSizes.push("1fr");
+            }
+        }
+        else if(settings.value.columnsCount < settings.value.columnsSizes.length)
+        {
+            settings.value.columnsSizes.splice(settings.value.columnsCount);
+        }
     }
 </script>
 
@@ -189,8 +205,20 @@
                                             <div v-if="settings.hasOwnProperty('columnsCount')" class="s-sidebar__setting">
                                                 <div class="s-sidebar__single">
                                                     <label>Columns</label>
-                                                    <InputNumber showButtons :min="1" :max="12" v-model="settings.columnsCount" />
+                                                    <InputNumber showButtons :min="1" :max="12" v-model="settings.columnsCount" @input="updateSizes()" />
                                                 </div>
+                                            </div>
+                                            <div v-if="settings.hasOwnProperty('columnsSizes')" class="s-sidebar__setting">
+                                                <Accordion value="0">
+                                                    <div v-for="column, index in settings.columnsSizes">
+                                                        <AccordionPanel :value="index.toString()">
+                                                            <AccordionHeader>Col {{ index + 1 }}</AccordionHeader>
+                                                            <AccordionContent>
+                                                                <InputText type="text" v-model="settings.columnsSizes[index]" />
+                                                            </AccordionContent>
+                                                        </AccordionPanel>
+                                                    </div>
+                                                </Accordion>
                                             </div>
                                             <div v-if="settings.hasOwnProperty('alignVertical')" class="s-sidebar__setting">
                                                 <div class="s-sidebar__multi">

@@ -125,7 +125,7 @@
 
 <template>
     <div class="editor dark-mode">
-        <!-- <MediaModal :show="showMediaModal" :elementData="mediaModalElementData" @update="(e) => {showMediaModal = false}" /> -->
+        <MediaModal :show="showMediaModal" :elementData="mediaModalElementData" @update="(e) => {showMediaModal = false}" />
         <div class="editor__top-bar">
             <div class="editor__top-bar-left">
                 <div class="editor__logo">Structure.</div>

@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
@@ -24,7 +23,7 @@ export default defineConfig({
     }   
   },
   build: {
-    outDir: '../../src/Resources/public',
+    outDir: './dist',
     //outDir: '../../../../public/bundles/structure',
     rollupOptions: {
       output: {

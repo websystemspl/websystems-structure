@@ -1,20 +1,18 @@
-import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteStaticCopy } from 'vite-plugin-static-copy'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    // viteStaticCopy({
-    //   targets: [
-    //     {
-    //       src: 'src/assets/s-styles-front.css',
-    //       dest: './'
-    //     }
-    //   ]
-    // })    
+    viteStaticCopy({
+      targets: [
+        {
+          src: 'src/assets/s-styles-front.css',
+          dest: './'
+        }
+      ]
+    })    
   ],
   base: './',
   resolve: {
@@ -23,8 +21,7 @@ export default defineConfig({
     }   
   },
   build: {
-    outDir: './dist',
-    //outDir: '../../../../public/bundles/structure',
+    outDir: '../../src/Resources/public',
     rollupOptions: {
       output: {
         entryFileNames: `structure_[name].js`,

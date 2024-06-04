@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <input type="text" v-model="pageContent" :name="props.name" :id="props.id" />
+  <input type="hidden" v-model="pageContent" :name="props.name" :id="props.id" />
   <div class="start-structure">
     <button type="button" class="start-structure__button" @click="startApp()">Start Structure</button>
   </div>

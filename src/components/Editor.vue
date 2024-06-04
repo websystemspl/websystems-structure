@@ -7,7 +7,6 @@
     import MediaModal from './MediaModal.vue'
     import '@vueup/vue-quill/dist/vue-quill.snow.css';
     import '@vueup/vue-quill/dist/vue-quill.bubble.css';
-    import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
     import Editor from 'primevue/editor';
     import Button from 'primevue/button';
     import TabView from 'primevue/tabview';
@@ -23,6 +22,7 @@
     import Tab from 'primevue/tab';
     import TabPanels from 'primevue/tabpanels';
     import TabPanel from 'primevue/tabpanel';
+    import ScrollPanel from 'primevue/scrollpanel';
 
     const props = defineProps({
         pageContent: {
@@ -33,13 +33,15 @@
         },
         save: {
             type: Object,
-            default: {},
+            default: null,
         },
         mediaEndpoint: {
             type: String,
             default: null,
         },
     });
+
+
 
     const emit = defineEmits(['close', 'update:content']);
 
@@ -60,6 +62,7 @@
     const mediaModalElementData = ref(null);
     const twigWidgets = ref(props.twigWidgets);
     const save = ref(props.save);
+
     const sidebar = ref();
     const editor_column = ref();
     const saveLoading = ref(false);
@@ -107,10 +110,10 @@
         const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ entity: save.entity, id: save.id, content: contentStore.content, property: save.property})
+            body: JSON.stringify({ entity: save.value.entity, id: save.value.id, content: contentStore.content, property: save.value.property})
         };
 
-        fetch(save.url, requestOptions).then(response => response.json()).then(data => {
+        fetch(save.value.url, requestOptions).then(response => response.json()).then(data => {
             saveLoading.value = false;
         });
     }
@@ -132,12 +135,13 @@
                 <Button icon="bi bi-plus-lg" @click="settings = null" severity="contrast" rounded  raised  />
             </div>
             <div class="editor__top-bar-right">
+                <Button v-if="save !== null" icon="bi bi-save" @click="saveData()" label="Save" />
                 <Button icon="bi bi-x-lg" @click="$emit('close')" severity="contrast" text  />
             </div>
         </div>
         <div class="editor__columns">
             <div class="editor__column editor__column--left" ref="sidebar">
-                <PerfectScrollbar>
+                <ScrollPanel style="width: 100%; height: 90vh;">
                     <div class="s-sidebar">
                         <div class="s-sidebar__blocks-wraper" v-if="settings === null">
                             <h3 class="s-sidebar__header">Blocks</h3>
@@ -198,14 +202,14 @@
                                                     </div>
                                                 </div>
                                             </div>                                            
-                                            <!-- <div v-if="settings.hasOwnProperty('block')" class="s-sidebar__setting">
+                                            <div v-if="settings.hasOwnProperty('block')" class="s-sidebar__setting">
                                                 <div class="s-sidebar__single">
                                                     <label>Widgets</label>
                                                     <select v-model="settings.block">
                                                         <option v-for="twigWidget in twigWidgets" :key="twigWidget.name" :value="twigWidget.name">{{ twigWidget.name }}</option>
                                                     </select>
                                                 </div>
-                                            </div> -->
+                                            </div>
                                             <div v-if="settings.hasOwnProperty('style')" class="s-sidebar__setting">
                                                 <div class="s-sidebar__multi">
                                                     <label>Header</label>
@@ -372,7 +376,7 @@
                             </div>
                         </div>
                     </div>
-                </PerfectScrollbar>
+                </ScrollPanel>
             </div>
             <Moveable
                 :target="sidebar"
@@ -391,7 +395,7 @@
                 @resize="onResize"
             />
             <div class="editor__column editor__column--right" ref="editor_column">
-                <PerfectScrollbar>
+                <ScrollPanel style="width: 100%; height: 90vh;">
                     <div style="margin: 20px 0;">
                         <draggable
                             class="drag-area"
@@ -409,7 +413,7 @@
                             </template>
                         </draggable>
                     </div>
-                </PerfectScrollbar>
+                </ScrollPanel>
             </div>
         </div>
     </div>

@@ -1,10 +1,11 @@
 <script setup>
 import Moveable from "vue3-moveable";
 import { ref, watch, onMounted, inject } from 'vue'
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar'
 import { contentStore } from './../store/content.js'
 import { mediaStore } from './../store/media.js'
 import FileUpload from 'primevue/fileupload';
+import ScrollPanel from 'primevue/scrollpanel';
+import Button from 'primevue/button';
 
 const props = defineProps({
     show: Boolean,
@@ -33,6 +34,13 @@ function fetchMedia()
 {
   mediaStore.fetchMedia(mediaEndpoint).then(() => {
     media.value = mediaStore.media;
+  })
+}
+
+function deleteMedia(id)
+{
+  mediaStore.deleteMedia(mediaEndpoint, id).then(() => {
+    fetchMedia();
   })
 }
 
@@ -73,14 +81,15 @@ watch(() => props.show, (value) => {
           <button type="button" class="s-button s-button--transparent" @click="$emit('update')"><i class="bi bi-x-lg"></i></button>
         </div>
         <div class="media-modal__body">
-          <PerfectScrollbar>
+          <ScrollPanel style="width: 100%; height: 300px;">
             <div class="media-list">
               <div v-for="item in media" :key="item.id" class="media-item">
                 <img class="media-item__image" :src="item.url" alt="media" @click="updateElementData(item.url)" />
-                <p>{{ item.name }}</p>
+                <p v-if="item.name">{{ item.name }}</p>
+                <Button type="button" @click="deleteMedia(item.id)">Delete</Button>
               </div>
             </div>
-          </PerfectScrollbar>
+          </ScrollPanel>
         </div>
       </div>
       <div class="media-modal__footer">

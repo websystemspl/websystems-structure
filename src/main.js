@@ -1,17 +1,17 @@
 import './assets/main.scss'
-
 import { createApp } from 'vue'
 import App from './App.vue'
-//import PrimeVue from 'primevue/config';
-//import PrimeVueStyled from 'primevue/styled';
 import PrimeVue from 'primevue/config';
-//import PrimeOne from 'primevue/themes/primeone';
 import Aura from 'primevue/themes/aura';
-
+import Tooltip from 'primevue/tooltip';
+import Ripple from 'primevue/ripple';
 
 const app = createApp({})
+app.directive('tooltip', Tooltip);
+app.directive('ripple', Ripple);
 app.use(PrimeVue, {
     theme: {
+        ripple: true,
         base: Aura,
         preset: Aura,
         options: {
